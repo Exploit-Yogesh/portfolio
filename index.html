@@ -106,6 +106,15 @@
             box-shadow: 0 0 30px var(--neon-green);
         }
 
+        /* --- ABOUT SECTION FIXED --- */
+        #about p {
+            max-width: 800px; 
+            line-height: 1.8; 
+            color: #ffffff; /* Forces all text in About to be white */
+            font-size: 1.1rem;
+            margin: 0 auto;
+        }
+
         /* --- EDUCATION SECTION --- */
         .edu-terminal { 
             background: rgba(0, 20, 0, 0.85); 
@@ -177,9 +186,7 @@
             animation: float-bubble 5s ease-in-out infinite;
         }
         
-        /* Multiple directions and timings for tools */
         .tool-card:nth-child(even) { animation-name: float-bubble-alt; animation-duration: 7s; }
-        .tool-card:nth-child(3n) { animation-duration: 6s; animation-delay: 0.5s; }
 
         .tool-card:hover {
             animation-play-state: paused;
@@ -192,7 +199,10 @@
         .tool-card img { width: 45%; margin-bottom: 8px; }
         .tool-name { color: #fff; font-size: 0.75rem; font-weight: bold; text-transform: uppercase; }
 
-        /* --- VIEWERS & SECTIONS --- */
+        /* --- SECTIONS --- */
+        section { padding: 100px 10% 60px; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+        h2 { font-size: 2.2rem; margin-bottom: 30px; color: #fff; text-transform: uppercase; border-bottom: 1px solid var(--neon-green); }
+
         .viewer-box {
             width: 100%; max-width: 900px; height: 600px;
             border: 2px solid var(--neon-green); background: #000;
@@ -206,9 +216,6 @@
             display: inline-block; margin-top: 10px;
         }
         .download-btn:hover { background: var(--neon-green); color: #000; box-shadow: 0 0 15px var(--neon-green); }
-
-        section { padding: 100px 10% 60px; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
-        h2 { font-size: 2.2rem; margin-bottom: 30px; color: #fff; text-transform: uppercase; border-bottom: 1px solid var(--neon-green); }
 
         /* --- CONTACT --- */
         .contact-terminal { 
@@ -252,9 +259,12 @@
 
     <section id="about">
         <h2> ABOUT_ME</h2>
-        <p style="max-width: 800px; line-height: 1.8; color: #fff; font-size: 1.1rem;">
-            Cyber Security Professional with expertise in <strong>Web Application Security</strong>, <strong>VAPT</strong>, and <strong>SOC Operations</strong>. 
-            Dedicated to identifying vulnerabilities and implementing robust security frameworks to protect digital assets.
+        <p>
+            I am a passionate and dedicated Cybersecurity Enthusiast with a strong interest in identifying and mitigating security vulnerabilities in <b>Web applications.</b> 
+            With hands-on experience in <b>penetration testing</b> and <b>web application security</b>, I continuously work on improving my skills by practicing real-world scenarios and solving security challenges.
+            <br><br>
+            I have practical knowledge of vulnerabilities such as <b>SQL Injection, Cross-Site Scripting (XSS), CORS misconfigurations, and Information Disclosure,</b> and I actively explore modern attack techniques and defense strategies. 
+            My approach focuses on understanding how systems work, thinking like an attacker, and securing applications effectively.
         </p>
     </section>
 
@@ -262,7 +272,7 @@
         <h2> EDUCATION </h2>
         <div class="edu-terminal">
             <div class="info-line"><span>> DEGREE:</span> Bachelor in Computer Application (BCA)</div>
-            <div class="info-line"><span>> COLLEGE:</span> Annasaheb Dange Arts, Commerce, Science</div>
+            <div class="info-line"><span>> COLLEGE:</span> Anasaheb Dange Arts, Commerce, Science</div>
             <div class="info-line"><span>> LOCATION:</span> Hatkanangle | <span>CGPA:</span> 7.5</div>
         </div>
         <div class="edu-terminal">
@@ -280,7 +290,7 @@
         <div class="skills-grid">
             <div class="skill-box">Web Application Security</div>
             <div class="skill-box">API Security</div>
-            <div class="skill-box">VAPT</div>
+            <div class="skill-box">Vulnerability Assessment & Penetration Testing (VAPT)</div>
             <div class="skill-box">OWASP Top 10</div>
             <div class="skill-box">Network Security </div>
             <div class="skill-box">ISO 27001 Compliance</div>
@@ -322,7 +332,7 @@
 
     <section id="contact">
         <div class="contact-terminal">
-            <h2 style="text-align:center; border-bottom: none;"> Let's Connect </h2>
+            <h2 style="text-align:center; border-bottom: none;">[ Let's Connect ]</h2>
             <div class="contact-info">
                 <p><span>> EMAIL:</span> 📩khotyogesh104@email.com</p>
                 <p><span>> LOCATION:</span> 📍Maharashtra, India</p>
