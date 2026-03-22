@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yogesh Khot | Cyber Specialist</title>
+    <style>
+        :root {
+            --neon-green: #00fbff;
+            --dark-bg: #050505;
+            --hacker-font: 'Courier New', Courier, monospace;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--neon-green);
+            font-family: var(--hacker-font);
+            overflow-x: hidden;
+        }
+
+        #cmatrix {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -2; opacity: 0.15;
+        }
+
+        /* --- HEADER (BOLD ONLY ON HOVER/CLICK) --- */
+        header {
+            background: rgba(0, 0, 0, 0.95);
+            border-bottom: 2px solid var(--neon-green);
+            position: fixed; 
+            width: 100%; top: 0; left: 0;
+            z-index: 1000; height: 70px;
+            display: flex; align-items: center;
+        }
+
+        .nav-links { 
+            display: flex; list-style: none; justify-content: space-around; 
+            width: 100%; max-width: 1200px; margin: 0 auto;
+        }
+
+        .nav-links li a { 
+            color: var(--neon-green); 
+            text-decoration: none; 
+            text-transform: uppercase; 
+            font-weight: 500; /* Normal weight */
+            font-size: 0.95rem; /* Fixed size */
+            transition: color 0.3s ease, font-weight 0.1s ease;
+            outline: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* ONLY BOLD ON HOVER/CLICK - NO SIZE CHANGE */
+        .nav-links li a:hover, 
+        .nav-links li a:active { 
+            font-weight: 900; 
+            color: #fff;
+            text-shadow: 0 0 8px var(--neon-green);
+        }
+
+
+/* DELETE OLD CERT CSS AND PASTE THIS */
+.cert-card-horizontal {
+    width: 90%;
+    max-width: 900px;
+    margin-top: 20px;
+}
+
+.horizontal-viewer {
+    width: 100%;
+    height: 500px; /* Adjust this height to see more/less of the cert at once */
+    border: 2px solid var(--neon-green);
+    background: #000;
+    overflow-y: auto;  /* Allows scrolling if the image is tall */
+    overflow-x: hidden; /* Keeps it strictly vertical */
+    border-radius: 10px;
+    position: relative;
+    box-shadow: 0 0 20px rgba(0, 255, 65, 0.15);
+}
+
+.rect-cert {
+    width: 100%;       /* Forces the rectangle to fill the width */
+    height: auto;      /* Maintains the rectangular aspect ratio */
+    display: block;
+}
+
+/* Custom Hacker Scrollbar for the Certificate */
+.horizontal-viewer::-webkit-scrollbar {
+    width: 6px;
+}
+.horizontal-viewer::-webkit-scrollbar-thumb {
+    background: var(--neon-green);
+    border-radius: 10px;
+}
+.horizontal-viewer::-webkit-scrollbar-track {
+    background: #050505;
+}
+
+/* THE PULSE ANIMATION */
+@keyframes neonPulse {
+    0%, 100% {
+        filter: drop-shadow(0 0 2px var(--neon-green));
+        opacity: 0.8;
+    }
+    50% {
+        filter: drop-shadow(0 0 10px var(--neon-green));
+        opacity: 1;
+    }
+}
+
+
+/* Contact */
+#contact {
+    padding-top: 100px; /* Space between Certs and Contact */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers the box horizontally */
+    justify-content: center;
+}
+
+
+
+
+
+  
+ /* --- SECTIONS --- */
+        section { 
+            padding: 100px 10% 60px; 
+            min-height: 100vh; 
+            display: flex; flex-direction: column; 
+            align-items: center; justify-content: center; 
+            text-align: center;
+        }
+
+        h2 { font-size: 2.2rem; margin-bottom: 30px; color: #fff; text-transform: uppercase; border-bottom: 1px solid var(--neon-green); }
+
+        /* --- SYNCED HOVER (ONLY FOR PROFILE & TOOLS) --- */
+        .sync-hover {
+            transition: transform 0.5s ease, box-shadow 0.5s ease, border-color 0.5s ease;
+            cursor: pointer;
+        }
+
+        .sync-hover:hover {
+            transform: scale(1.15) !important;
+            box-shadow: 0 0 50px var(--neon-green);
+            border-color: #fff !important;
+            background: rgba(0, 255, 65, 0.2);
+            animation-play-state: paused;
+            z-index: 10;
+        }
+
+
+        
+/* --- RESUME SECTION STYLING --- */
+#resume h2 {
+    color: #ffffff !important; 
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+#resume h3 {
+    color: #ffffff;
+    opacity: 0.8;
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 1rem;
+}
+
+.resume-card-horizontal {
+    width: 90%;
+    max-width: 900px;
+    background: rgba(0, 15, 0, 0.8);
+    border: 1px solid var(--neon-green);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.7);
+}
+
+.resume-viewer-box {
+    width: 100%;
+    height: 700px; /* Tall height for 2-page scrolling */
+    background: #fff; /* White background makes PDF look professional */
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.resume-footer {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.download-btn {
+    padding: 15px 40px;
+    border: 2px solid var(--neon-green);
+    background: rgba(0, 255, 65, 0.1);
+    color: var(--neon-green);
+    text-decoration: none;
+    font-weight: 900;
+    letter-spacing: 2px;
+    transition: 0.4s ease;
+    border-radius: 5px;
+}
+
+.download-btn:hover {
+    background: var(--neon-green);
+    color: #000;
+    box-shadow: 0 0 25px var(--neon-green);
+    transform: translateY(-3px);
+}
+        
+
+        /* --- HOME --- */
+        /* PASTE THIS NEW BLOCK */
+.profile-img {
+    width: 250px;           /* Size of the circle */
+    height: 250px;          /* Height must match width */
+    border-radius: 50%;     /* Makes it a circle */
+    border: 4px solid var(--neon-green); 
+    
+    /* THE FIX: */
+    object-fit: cover;      /* Crops the image to fill the circle without stretching */
+    object-position: center; /* Keeps your face in the middle */
+    
+    display: block;
+    margin: 0 auto 20px;
+    transition: transform 0.5s ease, box-shadow 0.5s ease, border-color 0.5s ease;
+}
+
+        .user-name { font-size: 4rem; margin-bottom: 5px; font-weight: 900; letter-spacing: 5px; }
+        .typing-wrapper { height: 40px; margin-bottom: 20px; }
+        #typing-text { color: #ffffff; font-weight: bold; font-size: 1.4rem; text-transform: uppercase; }
+
+        /* --- SKILLS --- */
+        /* --- NEW RECTANGULAR SKILLS ANIMATION --- */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Rectangular shape */
+    gap: 20px;
+    max-width: 1100px;
+    width: 100%;
+    margin-top: 30px;
+}
+
+.skill-box {
+    position: relative;
+    border: 1px solid rgba(0, 255, 65, 0.3);
+    padding: 15px;
+    background: rgba(0, 20, 0, 0.4);
+    color: var(--neon-green);
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    overflow: hidden;
+    transition: 0.4s all ease;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    border-left: 4px solid var(--neon-green); /* Cyber-deck accent */
+}
+
+
+
+/* The Scanning Line Animation */
+.skill-box::after {
+    content: '';
+    position: absolute;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(transparent, rgba(0, 255, 65, 0.1), transparent);
+    animation: scanLine 3s infinite linear;
+}
+
+@keyframes scanLine {
+    0% { top: -100%; }
+    100% { top: 100%; }
+}
+
+
+
+
+/* --- FIXED CONTACT JUMP & CENTERING --- */
+#contact {
+    padding: 120px 0;         /* Space for jumping */
+    scroll-margin-top: 70px;  /* Prevents header from covering the title */
+    display: flex;
+    flex-direction: column;
+    align-items: center;      /* Horizontal Center */
+    justify-content: center;  /* Vertical Center */
+    min-height: 100vh;        /* Makes it a full page section */
+    width: 100%;
+}
+
+.contact-terminal {
+    background: rgba(0, 20, 0, 0.7);
+    border: 2px solid var(--neon-green);
+    padding: 40px;
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 0 30px rgba(0, 255, 65, 0.2);
+}
+
+.contact-info {
+    margin: 25px 0;
+    border-top: 1px solid rgba(0, 255, 65, 0.3);
+    padding-top: 20px;
+}
+
+.contact-item {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+.contact-item span {
+    color: var(--neon-green);
+    font-weight: bold;
+}
+
+.contact-socials {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.social-btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 15px;
+    border: 1px solid var(--neon-green);
+    text-decoration: none;
+    color: var(--neon-green);
+    font-weight: 900;
+    font-size: 0.8rem;
+    transition: 0.3s ease;
+    background: rgba(0, 255, 65, 0.05);
+}
+
+.social-btn:hover {
+    background: var(--neon-green);
+    color: #000;
+    box-shadow: 0 0 20px var(--neon-green);
+}
+
+.social-btn img {
+    width: 20px;
+    filter: drop-shadow(0 0 2px var(--neon-green));
+}
+
+.social-btn:hover img {
+    filter: brightness(0);
+}
+    
+
+
+
+
+
+
+
+
+/* Hover Effect: Activation */
+.skill-box:hover {
+    background: rgba(0, 255, 65, 0.15);
+    border-color: #fff;
+    box-shadow: -5px 0 20px var(--neon-green);
+    transform: translateX(10px); /* Slight slide right like a menu */
+    color: #fff;
+}
+
+/* Bullet point effect */
+.skill-box::before {
+    content: '>';
+    margin-right: 10px;
+    font-family: monospace;
+    opacity: 0.7;
+}
+
+        /* --- TOOLS --- */
+        .tools-grid { 
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); 
+            gap: 40px; width: 100%; margin-top: 50px; 
+        }
+
+        .tool-card {
+            background: rgba(0, 255, 65, 0.05); border: 2px solid var(--neon-green);
+            height: 150px; width: 150px; border-radius: 50%;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            margin: auto; position: relative;
+        }
+        
+        .tool-card img { width: 45%; margin-bottom: 8px; }
+        .tool-name { color: #fff; font-size: 0.75rem; font-weight: bold; text-transform: uppercase; }
+
+        /* FLOATING ANIMATIONS */
+        .orbit-1 { animation: float-v 4s ease-in-out infinite; }
+        .orbit-2 { animation: float-h 5s ease-in-out infinite; }
+        .orbit-3 { animation: float-diag 6s ease-in-out infinite; }
+        .orbit-4 { animation: float-circle 7s linear infinite; }
+
+        @keyframes float-v { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
+        @keyframes float-h { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(20px); } }
+        @keyframes float-diag { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(15px, -15px); } }
+        @keyframes float-circle {
+            0% { transform: rotate(0deg) translate(10px) rotate(0deg); }
+            100% { transform: rotate(360deg) translate(10px) rotate(-360deg); }
+        }
+
+        .static-card { border: 1px solid var(--neon-green); padding: 20px; width: 100%; max-width: 500px; }
+
+    </style>
+</head>
+<body>
+
+    <canvas id="cmatrix"></canvas>
+
+    <header>
+       
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About Me</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#tools">Tools</a></li>
+            <li><a href="#resume">Resume</a></li>
+            <li><a href="#certs">Certification</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+      
+    </header>
+
+    <section id="home">
+        <img src="C:\Visual Studio\Portfolio\Yogesh Khot.png" alt="Yogesh Khot" class="profile-img sync-hover">
+        <h1 class="user-name">YOGESH KHOT</h1>
+        <div class="typing-wrapper">
+            <span id="typing-text"></span><span style="color:#fff">|</span>
+        </div>
+    </section>
+
+    
+
+
+    <section id="about">
+        <h2>[ ABOUT_ME ]</h2>
+        <p style="max-width: 700px; line-height: 1.6;">
+            I am a Cyber Security Professional with deep expertise in SOC Operations and Ethical Hacking. I focus on securing digital assets through proactive threat hunting and vulnerability management.
+        </p>
+    </section>
+
+    <section id="skills">
+        <h2>[ SKILLS ]</h2>
+        <div class="skills-grid">
+    <div class="skill-box">Web Application Security</div>
+    <div class="skill-box">API Security</div>
+    <div class="skill-box">Vulnerability Assessment & Penetration Testing (VAPT)</div>
+    <div class="skill-box">ISO 27001</div>
+    <div class="skill-box">Network Security</div>
+    <div class="skill-box">Access Control & RBAC Policies</div>
+    <div class="skill-box">Control Gap Analysis</div>
+    <div class="skill-box">Alert Monitoring And Log Analysis</div>
+    <div class="skill-box">Documentation & Reporting</div>
+</div>
+
+    </section>
+
+    <section id="tools">
+        <h2>[ Tools And Technology ]</h2>
+        <div class="tools-grid">
+            <div class="tool-card orbit-1 sync-hover"><img src="C:\Visual Studio\Portfolio\burp.webp" alt="Burp"><span class="tool-name">Burpsuite</span></div>
+            <div class="tool-card orbit-2 sync-hover"><img src="C:\Visual Studio\Portfolio\postman.png" alt="Postman"><span class="tool-name">Postman</span></div>
+            <div class="tool-card orbit-3 sync-hover"><img src="C:\Visual Studio\Portfolio\nmap tool.webp" alt="Nmap"><span class="tool-name">Nmap</span></div>
+            <div class="tool-card orbit-4 sync-hover"><img src="C:\Visual Studio\Portfolio\nikto.jpg" alt="Nikto"><span class="tool-name">Nikto</span></div>
+            <div class="tool-card orbit-1 sync-hover"><img src="C:\Visual Studio\Portfolio\zap.jpg" alt="Zap"><span class="tool-name">OWASP Zap</span></div>
+            <div class="tool-card orbit-2 sync-hover"><img src="C:\Visual Studio\Portfolio\nuclei.png" alt="Nuclei"><span class="tool-name">Nuclei</span></div>
+            <div class="tool-card orbit-3 sync-hover"><img src="C:\Visual Studio\Portfolio\wireshark.jpg" alt="Wireshark"><span class="tool-name">Wireshark</span></div>
+            <div class="tool-card orbit-4 sync-hover"><img src="C:\Visual Studio\Portfolio\wazuh.png" alt="Wazuh"><span class="tool-name">Wazuh</span></div>
+            <div class="tool-card orbit-1 sync-hover"><img src="C:\Visual Studio\Portfolio\acuntix.png" alt="Acunetix"><span class="tool-name">Acunetix</span></div>
+            <div class="tool-card orbit-2 sync-hover"><img src="C:\Visual Studio\Portfolio\nessus.png" alt="Nessus"><span class="tool-name">Nessus</span></div>
+        </div>
+    </section>
+
+
+
+    <section id="resume">
+    <div class="resume-card-horizontal">
+        <h2 style="border:none; color: var(--neon-green); text-align: center; margin-bottom: 20px;">
+            [ RESUME_DATABASE ]
+        </h2>
+        
+        <div class="resume-viewer-box">
+            <iframe src="C:\Visual Studio\Portfolio\Yogesh_Khot_Resume.pdf.pdf" width="100%" height="100%" style="border:none;">
+                <p>Your browser does not support PDF viewing. 
+                   <a href="YOUR_RESUME_FILE_NAME.pdf">Click here to download it.</a>
+                </p>
+            </iframe>
+        </div>
+
+        <div class="resume-footer">
+            <a href="YOUR_RESUME_FILE_NAME.pdf" download class="download-btn">
+                DOWNLOAD_FULL_CV
+            </a>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+    
+    <section id="certs">
+    <h2>[ CERTIFICATIONS ]</h2>
+    <div class="cert-card-horizontal">
+        <h3>Certified Ethical Hacker (CEH)</h3>
+        <div class="horizontal-viewer">
+            <img src="C:\Visual Studio\Portfolio\certificate.png" alt="CEH Certificate" class="rect-cert">
+        </div>
+    </div>
+</section>
+
+
+
+
+  <section id="contact">
+    <div class="contact-terminal">
+        <h2 style="border:none; font-size: 1.5rem; color: var(--neon-green);">[ Let's Connect..! ]</h2>
+        
+        <div class="contact-info">
+            <p class="contact-item"><span>EMAIL:</span> khotyogesh104@gmail.com</p>
+            <p class="contact-item"><span>LOCATION:</span> Maharashtra, India</p>
+        </div>
+
+        <div class="contact-socials">
+            <a href="https://www.linkedin.com/in/yogesh-khot-077077378/" target="_blank" class="social-btn">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="LinkedIn">
+                <span>LINKEDIN</span>
+            </a>
+
+        <a href="https://github.com/Exploit-Yogesh" target="_blank" class="social-btn github-only">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" style="filter: invert(1);">
+        <span>GITHUB</span>
+    </a>
+        </div>
+    </div>
+</section>
+    
+   
+  
+
+
+
+
+    <script>
+        const canvas = document.getElementById('cmatrix');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+        const letters = "0101HACKER";
+        const fontSize = 16;
+        const columns = canvas.width / fontSize;
+        const drops = Array(Math.floor(columns)).fill(1);
+        function draw() {
+            ctx.fillStyle = "rgba(0, 0, 0, 0.05)"; ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = "#00ff41"; ctx.font = fontSize + "px monospace";
+            drops.forEach((y, i) => {
+                const text = letters.charAt(Math.floor(Math.random() * letters.length));
+                ctx.fillText(text, i * fontSize, y * fontSize);
+                if (y * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
+                drops[i]++;
+            });
+        }
+        setInterval(draw, 35);
+
+        const textElement = document.getElementById('typing-text');
+        const phrases = ["Cyber Security Analyst", "Ethical Hacker", "SOC Analyst", "Penetration Tester"];
+        let phraseIndex = 0, charIndex = 0, isDeleting = false;
+
+        function typeEffect() {
+            const current = phrases[phraseIndex];
+            textElement.textContent = isDeleting ? current.substring(0, charIndex - 1) : current.substring(0, charIndex + 1);
+            charIndex = isDeleting ? charIndex - 1 : charIndex + 1;
+            let speed = isDeleting ? 60 : 150;
+            if (!isDeleting && charIndex === current.length) { isDeleting = true; speed = 2000; }
+            else if (isDeleting && charIndex === 0) { isDeleting = false; phraseIndex = (phraseIndex + 1) % phrases.length; speed = 500; }
+            setTimeout(typeEffect, speed);
+        }
+        window.onload = typeEffect;
+    </script>
+</body>
+</html>
