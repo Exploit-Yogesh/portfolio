@@ -63,6 +63,13 @@
             100% { transform: translateY(0px) translateX(0px); }
         }
 
+        @keyframes float-bubble-alt {
+            0% { transform: translateY(0px) translateX(0px); }
+            33% { transform: translateY(12px) translateX(-8px); }
+            66% { transform: translateY(-5px) translateX(10px); }
+            100% { transform: translateY(0px) translateX(0px); }
+        }
+
         @keyframes pulse-border {
             0% { border-left-width: 6px; }
             50% { border-left-width: 12px; }
@@ -79,6 +86,7 @@
         }
 
         #typing-text { color: #ffffff; font-weight: bold; font-size: 1.4rem; text-transform: uppercase; }
+        .typing-wrapper { color: #ffffff; margin-top: 10px; }
 
         .profile-img {
             width: 250px;
@@ -97,6 +105,25 @@
             transform: scale(1.1);
             box-shadow: 0 0 30px var(--neon-green);
         }
+
+        /* --- EDUCATION SECTION --- */
+        .edu-terminal { 
+            background: rgba(0, 20, 0, 0.85); 
+            border: 2px solid var(--neon-green); 
+            padding: 25px; 
+            border-radius: 10px; 
+            width: 100%; max-width: 800px;
+            text-align: left;
+            transition: 0.4s;
+            margin-bottom: 20px;
+        }
+        .edu-terminal:hover {
+            transform: translateY(-5px);
+            border-color: #fff;
+            box-shadow: 0 10px 20px rgba(0, 251, 255, 0.2);
+        }
+        .info-line { margin-bottom: 8px; color: #fff; }
+        .info-line span { color: var(--neon-green); font-weight: bold; }
 
         /* --- SKILLS SECTION --- */
         .skills-grid {
@@ -123,22 +150,13 @@
             display: flex;
             justify-content: flex-start;
             align-items: center;
-            text-align: left;
-            position: relative;
-            overflow: hidden;
         }
 
-        .skill-box::before { 
-            content: '>'; 
-            margin-right: 15px; 
-            flex-shrink: 0;
-            opacity: 0.8;
-        }
+        .skill-box::before { content: '>'; margin-right: 15px; opacity: 0.8; }
         
         .skill-box:hover {
             background: rgba(0, 251, 255, 0.15);
             color: #fff;
-            box-shadow: inset 0 0 20px rgba(0, 251, 255, 0.2), 0 0 15px rgba(0, 251, 255, 0.1);
             border-left-color: #fff;
             animation: pulse-border 1.5s infinite;
         }
@@ -155,32 +173,30 @@
             display: flex; flex-direction: column; align-items: center; justify-content: center;
             margin: auto; 
             transition: 0.4s ease;
+            cursor: pointer;
             animation: float-bubble 5s ease-in-out infinite;
-            cursor: crosshair;
         }
         
+        /* Multiple directions and timings for tools */
+        .tool-card:nth-child(even) { animation-name: float-bubble-alt; animation-duration: 7s; }
+        .tool-card:nth-child(3n) { animation-duration: 6s; animation-delay: 0.5s; }
+
         .tool-card:hover {
             animation-play-state: paused;
             transform: scale(1.15);
             background: rgba(0, 251, 255, 0.2);
-            box-shadow: 0 0 20px var(--neon-green);
+            box-shadow: 0 0 30px var(--neon-green);
+            border-color: #fff;
         }
 
-        .tool-card:nth-child(even) { animation-duration: 7s; animation-delay: 1s; }
         .tool-card img { width: 45%; margin-bottom: 8px; }
         .tool-name { color: #fff; font-size: 0.75rem; font-weight: bold; text-transform: uppercase; }
 
-        /* --- VIEWERS --- */
+        /* --- VIEWERS & SECTIONS --- */
         .viewer-box {
-            width: 100%; 
-            max-width: 900px; 
-            height: 600px;
-            border: 2px solid var(--neon-green); 
-            background: #000;
-            margin: 20px 0; 
-            border-radius: 8px; 
-            overflow: hidden; 
-            display: block;
+            width: 100%; max-width: 900px; height: 600px;
+            border: 2px solid var(--neon-green); background: #000;
+            margin: 20px 0; border-radius: 8px; overflow: hidden; 
         }
 
         .download-btn {
@@ -191,45 +207,21 @@
         }
         .download-btn:hover { background: var(--neon-green); color: #000; box-shadow: 0 0 15px var(--neon-green); }
 
-        /* --- SECTIONS --- */
         section { padding: 100px 10% 60px; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
         h2 { font-size: 2.2rem; margin-bottom: 30px; color: #fff; text-transform: uppercase; border-bottom: 1px solid var(--neon-green); }
 
-        /* --- CONTACT SECTION (MODIFIED HOVER ANIMATION) --- */
+        /* --- CONTACT --- */
         .contact-terminal { 
-            background: rgba(0, 20, 0, 0.85); 
-            border: 2px solid var(--neon-green); 
-            padding: 40px; 
-            border-radius: 10px; 
-            width: 90%; 
-            max-width: 500px;
-            text-align: left;
-            position: relative;
-            /* Smooth transition for the rectangle */
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 0 10px rgba(0, 251, 255, 0.1);
+            background: rgba(0, 20, 0, 0.85); border: 2px solid var(--neon-green); 
+            padding: 40px; border-radius: 10px; width: 90%; max-width: 500px;
+            text-align: left; transition: all 0.4s;
         }
-
-        /* Hover effect for the contact rectangle */
-        .contact-terminal:hover {
-            transform: translateY(-10px) scale(1.02); /* Lift and grow */
-            border-color: #fff; /* Border turns white-glow */
-            box-shadow: 0 15px 35px rgba(0, 251, 255, 0.4); /* Stronger neon glow */
-            background: rgba(0, 30, 30, 0.95); /* Slightly lighter background */
-        }
-
-        .contact-info { margin-bottom: 25px; color: #fff; line-height: 1.6; }
-        .contact-info p { margin-bottom: 10px; font-size: 1rem; }
-        .contact-info span { color: var(--neon-green); font-weight: bold; }
-
+        .contact-terminal:hover { transform: translateY(-10px); border-color: #fff; box-shadow: 0 15px 35px rgba(0, 251, 255, 0.4); }
         .social-btn { 
-            padding: 15px; border: 1px solid var(--neon-green); 
-            text-decoration: none; color: var(--neon-green); 
-            font-weight: 900; transition: 0.3s ease; 
-            display: flex; align-items: center; gap: 10px; 
-            justify-content: center; margin-top: 10px; 
+            padding: 15px; border: 1px solid var(--neon-green); text-decoration: none; color: var(--neon-green); 
+            font-weight: 900; transition: 0.3s ease; display: flex; align-items: center; gap: 10px; justify-content: center; margin-top: 10px; 
         }
-        .social-btn:hover { background: var(--neon-green); color: #000; transform: translateX(5px); }
+        .social-btn:hover { background: var(--neon-green); color: #000; }
         .social-btn img { width: 20px; }
     </style>
 </head>
@@ -241,6 +233,7 @@
         <ul class="nav-links">
             <li><a href="#home">Home</a></li>
             <li><a href="#about">About Me</a></li>
+            <li><a href="#education">Education</a></li>
             <li><a href="#skills">Skills</a></li>
             <li><a href="#tools">Tools</a></li>
             <li><a href="#resume">Resume</a></li>
@@ -253,7 +246,7 @@
         <img src="Portfolio/Yogesh Khot.png" alt="Yogesh Khot" class="profile-img">
         <h1 class="user-name">YOGESH KHOT</h1>
         <div class="typing-wrapper">
-            <span id="typing-text"></span><span style="color:var(--neon-green)">|</span>
+            <span id="typing-text"></span><span>|</span>
         </div>
     </section>
 
@@ -263,6 +256,23 @@
             Cyber Security Professional with expertise in <strong>Web Application Security</strong>, <strong>VAPT</strong>, and <strong>SOC Operations</strong>. 
             Dedicated to identifying vulnerabilities and implementing robust security frameworks to protect digital assets.
         </p>
+    </section>
+
+    <section id="education">
+        <h2> EDUCATION </h2>
+        <div class="edu-terminal">
+            <div class="info-line"><span>> DEGREE:</span> Bachelor in Computer Application (BCA)</div>
+            <div class="info-line"><span>> COLLEGE:</span> Anasaheb Dange Arts, Commerce, Science</div>
+            <div class="info-line"><span>> LOCATION:</span> Hatkanangle | <span>CGPA:</span> 7.5</div>
+        </div>
+        <div class="edu-terminal">
+            <div class="info-line"><span>> HIGHER EDUCATION:</span> Yashodeep Academy</div>
+            <div class="info-line"><span>> LOCATION:</span> Kabnoor | <span>STREAM:</span> PCB | <span>PERCENTAGE:</span> 67%</div>
+        </div>
+        <div class="edu-terminal">
+            <div class="info-line"><span>> SECONDARY EDUCATION:</span> Sahyadri Vidyaniketan</div>
+            <div class="info-line"><span>> LOCATION:</span> Male | <span>PERCENTAGE:</span> 78.20%</div>
+        </div>
     </section>
 
     <section id="skills">
@@ -298,13 +308,7 @@
     <section id="resume">
         <h2> RESUME </h2>
         <div class="viewer-box">
-            <object data="Portfolio/Yogesh_Khot_Resume.pdf.pdf" type="application/pdf" width="100%" height="100%">
-                <iframe src="Portfolio/Yogesh_Khot_Resume.pdf.pdf" width="100%" height="100%" style="border:none;">
-                    <p>Your browser does not support PDFs. 
-                        <a href="Portfolio/Yogesh_Khot_Resume.pdf.pdf">Download the PDF</a> to view it.
-                    </p>
-                </iframe>
-            </object>
+            <iframe src="Portfolio/Yogesh_Khot_Resume.pdf.pdf" width="100%" height="100%" style="border:none;"></iframe>
         </div>
         <a href="Portfolio/Yogesh_Khot_Resume.pdf.pdf" download class="download-btn">DOWNLOAD_CV.PDF</a>
     </section>
