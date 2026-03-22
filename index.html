@@ -175,10 +175,17 @@
 
         /* --- VIEWERS --- */
         .viewer-box {
-            width: 100%; max-width: 900px; height: 600px;
-            border: 2px solid var(--neon-green); background: #000;
-            margin: 20px 0; border-radius: 8px; overflow: auto;
+            width: 100%; 
+            max-width: 900px; 
+            height: 600px;
+            border: 2px solid var(--neon-green); 
+            background: #000;
+            margin: 20px 0; 
+            border-radius: 8px; 
+            overflow: hidden; /* Changed from auto to hidden for cleaner iframe fit */
+            display: block;
         }
+      
 
         .download-btn {
             padding: 12px 30px; border: 2px solid var(--neon-green);
@@ -283,10 +290,18 @@
     <section id="resume">
         <h2>[ RESUME ]</h2>
         <div class="viewer-box">
-            <iframe src="Portfolio/Yogesh_Khot_Resume.pdf" width="100%" height="100%" style="border:none;"></iframe>
+            <object data="Portfolio/Yogesh_Khot_Resume.pdf" type="application/pdf" width="100%" height="100%">
+                <iframe src="Portfolio/Yogesh_Khot_Resume.pdf" width="100%" height="100%" style="border:none;">
+                    <p>Your browser does not support PDFs. 
+                        <a href="Portfolio/Yogesh_Khot_Resume.pdf">Download the PDF</a> to view it.
+                    </p>
+                </iframe>
+            </object>
         </div>
         <a href="Portfolio/Yogesh_Khot_Resume.pdf" download class="download-btn">DOWNLOAD_CV.PDF</a>
     </section>
+
+
 
     <section id="certs">
         <h2>[ CERTIFICATION ]</h2>
