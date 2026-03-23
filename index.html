@@ -55,6 +55,67 @@
             text-shadow: 0 0 8px var(--neon-green);
         }
 
+        /* ==========================================
+           MODIFIED: MOBILE HAMBURGER STYLES 
+           ========================================== */
+        .hamburger {
+            display: none; /* Hidden on desktop */
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+            position: absolute;
+            right: 20px;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 30px;
+            height: 3px;
+            background-color: var(--neon-green);
+            transition: 0.3s ease;
+        }
+
+        /* Hamburger Animation when active */
+        .hamburger.active span:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+
+        @media (max-width: 992px) {
+            .hamburger {
+                display: flex; /* Shown on mobile/tablet */
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                right: -100%; /* Hidden off-screen by default */
+                height: calc(100vh - 70px);
+                background: rgba(5, 5, 5, 0.95);
+                border-left: 2px solid var(--neon-green);
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+                gap: 30px;
+                padding-top: 50px;
+                width: 250px;
+                transition: 0.4s ease;
+            }
+
+            .nav-links.active {
+                right: 0; /* Slides in when active */
+            }
+        }
+        /* ========================================== */
+
         /* --- ANIMATIONS --- */
         @keyframes float-bubble {
             0% { transform: translateY(0px) translateX(0px); }
@@ -110,7 +171,7 @@
         #about p {
             max-width: 800px; 
             line-height: 1.8; 
-            color: #ffffff; /* Forces all text in About to be white */
+            color: #ffffff; 
             font-size: 1.1rem;
             margin: 0 auto;
         }
@@ -230,6 +291,15 @@
         }
         .social-btn:hover { background: var(--neon-green); color: #000; }
         .social-btn img { width: 20px; }
+
+        /* Media queries for smaller typography */
+        @media (max-width: 768px) {
+            .user-name { font-size: 2.5rem; letter-spacing: 2px; }
+            #typing-text { font-size: 1.1rem; }
+            section { padding: 80px 5% 40px; }
+            h2 { font-size: 1.8rem; }
+            .tools-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+        }
     </style>
 </head>
 <body>
@@ -237,7 +307,13 @@
     <canvas id="cmatrix"></canvas>
 
     <header>
-        <ul class="nav-links">
+        <div class="hamburger" id="hamburger-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <ul class="nav-links" id="nav-list">
             <li><a href="#home"><b>Home</b></a></li>
             <li><a href="#about"><b>About Me</b></a></li>
             <li><a href="#education"><b>Education</b></a></li>
@@ -385,7 +461,30 @@
             else if (isDeleting && charIndex === 0) { isDeleting = false; phraseIndex = (phraseIndex + 1) % phrases.length; speed = 500; }
             setTimeout(typeEffect, speed);
         }
+
+        // ==========================================
+        // MODIFIED: MOBILE NAVIGATION LOGIC 
+        // ==========================================
+        const hamburger = document.getElementById('hamburger-menu');
+        const navList = document.getElementById('nav-list');
+        const navLinks = document.querySelectorAll('.nav-links li a');
+
+        // Toggle dropdown menu
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navList.classList.toggle('active');
+        });
+
+        // Close dropdown when a link is clicked
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navList.classList.remove('active');
+            });
+        });
+
         window.onload = typeEffect;
+        // ==========================================
     </script>
 </body>
 </html>
