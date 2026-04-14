@@ -300,6 +300,63 @@
             h2 { font-size: 1.8rem; }
             .tools-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
         }
+
+
+
+        /* --- PROJECTS SECTION --- */
+.projects-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    width: 100%;
+    max-width: 1100px;
+    margin-top: 30px;
+}
+
+.project-card {
+    background: rgba(0, 20, 0, 0.8);
+    border: 2px solid var(--neon-green);
+    padding: 25px;
+    text-align: left;
+    transition: 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 20px rgba(0, 251, 255, 0.3);
+    border-color: #fff;
+}
+
+.project-card h3 {
+    color: #fff;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+.project-card p {
+    color: #ccc;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.project-link {
+    display: inline-block;
+    color: var(--neon-green);
+    text-decoration: none;
+    border: 1px solid var(--neon-green);
+    padding: 8px 15px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.project-link:hover {
+    background: var(--neon-green);
+    color: #000;
+}
     </style>
 </head>
 <body>
@@ -313,16 +370,18 @@
             <span></span>
         </div>
 
-        <ul class="nav-links" id="nav-list">
-            <li><a href="#home"><b>Home</b></a></li>
-            <li><a href="#about"><b>About Me</b></a></li>
-            <li><a href="#education"><b>Education</b></a></li>
-            <li><a href="#skills"><b>Skills</b></a></li>
-            <li><a href="#tools"><b>Tools</b></a></li>
-            <li><a href="#resume"><b>Resume</b></a></li>
-            <li><a href="#certs"><b>Certification</b></a></li>
-            <li><a href="#contact"><b>Contact</b></a></li>
-        </ul>
+       <ul class="nav-links" id="nav-list">
+    <li><a href="#home"><b>Home</b></a></li>
+    <li><a href="#about"><b>About Me</b></a></li>
+    <li><a href="#education"><b>Education</b></a></li>
+    <li><a href="#skills"><b>Skills</b></a></li>
+    <li><a href="#tools"><b>Tools</b></a></li>
+    <li><a href="#projects"><b>Projects</b></a></li> <li><a href="#resume"><b>Resume</b></a></li>
+    <li><a href="#certs"><b>Certification</b></a></li>
+    <li><a href="#contact"><b>Contact</b></a></li>
+</ul>
+
+
     </header>
 
     <section id="home">
@@ -337,11 +396,11 @@
         <h2> ABOUT_ME</h2>
         <p>
             I am a passionate and dedicated Cybersecurity Enthusiast with a strong interest in identifying and mitigating security vulnerabilities in <b>Web applications.</b> 
-            With hands-on experience in <b>Penetration Testing</b> like <b>Web Application Security</b>, <b>API Security</b>, <b>Network Security</b> I continuously work on improving my skills by practicing real-world scenarios and solving security challenges.
+            With hands-on experience in <b>penetration testing</b> and <b>web application security</b>, I continuously work on improving my skills by practicing real-world scenarios and solving security challenges.
             </p>
             <br>
             <p>
-            I have practical knowledge of vulnerabilities such as <b>SQL Injection, Cross-Site Scripting (XSS), CORS misconfigurations,  and Information Disclosure,</b>and <b>Network Security</b> like <b>Open Ports,</b> <b>Running Services,</b> <b>Misconfigure Software</b>, and I actively explore modern attack techniques and defense strategies. 
+            I have practical knowledge of vulnerabilities such as <b>SQL Injection, Cross-Site Scripting (XSS), CORS misconfigurations, XXE injection, Broken Access Control, Authentication Failures, JWT Attacks, API Testing, File Upload Vulnerability, Path Traversal, and Information Disclosure,</b> and I actively explore modern attack techniques and defense strategies. 
             My approach focuses on understanding how systems work, thinking like an attacker, and securing applications effectively.
         </p>
     </section>
@@ -380,7 +439,7 @@
     <section id="tools">
         <h2> Tools And Technology </h2>
         <div class="tools-grid">
-            <div class="tool-card"><img src="Portfolio/Burp.jpg" alt="Burp"><span class="tool-name">Burpsuite</span></div>
+            <div class="tool-card"><img src="Portfolio/burp.webp" alt="Burp"><span class="tool-name">Burpsuite</span></div>
             <div class="tool-card"><img src="Portfolio/postman.png" alt="Postman"><span class="tool-name">Postman</span></div>
             <div class="tool-card"><img src="Portfolio/nmap tool.webp" alt="Nmap"><span class="tool-name">Nmap</span></div>
             <div class="tool-card"><img src="Portfolio/nikto.jpg" alt="Nikto"><span class="tool-name">Nikto</span></div>
@@ -393,12 +452,31 @@
         </div>
     </section>
 
+
+
+    <section id="projects">
+        <h2> RECENT_PROJECTS </h2>
+        <div class="projects-container">
+            <div class="project-card">
+                <h3>Password Strength Tester</h3>
+                <p> Design a Static Web Application For User to Test There Password Strength. And Also Add Create Your Own Password to Live Test How Secure There Password.</p>
+                <a href="https://password-strength-tester-jade.vercel.app/" target="_blank" class="project-link">[ VIEW_PROJECT ]</a>
+            </div>
+
+            
+
+        </div>
+    </section>
+
+
+
+
     <section id="resume">
         <h2> RESUME </h2>
         <div class="viewer-box">
-            <iframe src="Portfolio/Yogesh_Resume.pdf" width="100%" height="100%" style="border:none;"></iframe>
+            <iframe src="Portfolio/Yogesh_Khot_Resume.pdf.pdf" width="100%" height="100%" style="border:none;"></iframe>
         </div>
-        <a href="Portfolio/Yogesh_Resume.pdf" download class="download-btn">DOWNLOAD_CV.PDF</a>
+        <a href="Portfolio/Yogesh_Khot_Resume.pdf.pdf" download class="download-btn">DOWNLOAD_CV.PDF</a>
     </section>
 
     <section id="certs">
@@ -410,7 +488,7 @@
 
     <section id="contact">
         <div class="contact-terminal">
-            <h2 style="text-align:center; border-bottom: none;"> Let's Connect </h2>
+            <h2 style="text-align:center; border-bottom: none;">[ Let's Connect ]</h2>
             <div class="contact-info">
                 <p><span>> EMAIL:</span> 📩khotyogesh104@email.com</p>
                 <p><span>> LOCATION:</span> 📍Maharashtra, India</p>
@@ -450,7 +528,7 @@
         setInterval(draw, 35);
 
         const textElement = document.getElementById('typing-text');
-        const phrases = ["Cyber Security Analyst", "Ethical Hacker", "SOC Analyst"];
+        const phrases = ["Cyber Security Analyst", "Ethical Hacker", "SOC Analyst", "Penetration Tester"];
         let phraseIndex = 0, charIndex = 0, isDeleting = false;
         function typeEffect() {
             const current = phrases[phraseIndex];
